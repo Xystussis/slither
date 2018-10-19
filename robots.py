@@ -5,6 +5,11 @@ import re
 class Robots:
 
     def __init__(self, filename):
+        if 'robots.txt' not in filename:
+            if filename[-1] == '/':
+                filename = f"{filename}robots.txt"
+            else:
+                filename = f"{filename}/robots.txt"
         self._filename = filename
         self._disallowed = []
         self._fetchFile()
@@ -24,7 +29,8 @@ class Robots:
                 user_agent = value.strip()
             if user_agent == "*" or user_agent == "our name?":
                 if instruction.lower() == "disallow":
-                    self._disallowed.append(value.strip())
+                    if value.strip():
+                        self._disallowed.append(value.strip())
 
     def _found_as_regex(self, pattern_string, search_item):
         pattern_string = pattern_string.replace("*", ".*")
