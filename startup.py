@@ -18,3 +18,4 @@ if len(argv) != 2:
 site_reader = SiteReader(argv[1])
 result = site_reader.read()
 print(result.get_request())
+print(result.get_links())

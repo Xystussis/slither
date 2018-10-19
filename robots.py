@@ -32,7 +32,8 @@ class Robots:
                     if value.strip():
                         self._disallowed.append(value.strip())
 
-    def _found_as_regex(self, pattern_string, search_item):
+    @staticmethod
+    def _found_as_regex(pattern_string, search_item):
         pattern_string = pattern_string.replace("*", ".*")
         pattern_string = pattern_string.replace("/", r'\/')
         pattern_string = pattern_string.replace("?", r'\?')
