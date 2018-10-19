@@ -12,10 +12,10 @@ class Robots:
                 filename = f"{filename}/robots.txt"
         self._filename = filename
         self._disallowed = []
-        self._fetchFile()
+        self._fetch_file()
         self._parse()
 
-    def _fetchFile(self):
+    def _fetch_file(self):
         self._file_contents = requests.get(self._filename)
 
     def _parse(self):
